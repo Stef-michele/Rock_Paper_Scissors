@@ -3,6 +3,9 @@ import java.awt.*;
 import java.util.Random;
 import java.util.Map;
 import java.util.HashMap;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 public class RockPaperScissorsFrame extends JFrame {
     // Constants & Variables
@@ -24,7 +27,8 @@ public class RockPaperScissorsFrame extends JFrame {
     private JTextArea resultTextArea;
 
     // Constructor - Sets up the Game Window
-    public RockPaperScissorsFrame() {
+    public RockPaperScissorsFrame()
+    {
         super("Rock Paper Scissors Game");
         setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +43,8 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
 
-    private void setupButtonPanel() {
+    private void setupButtonPanel()
+    {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 4, 10, 10));
         buttonPanel.setBorder(BorderFactory.createEtchedBorder());
 
@@ -63,7 +68,8 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
 
-    private void setupStatsPanel() {
+    private void setupStatsPanel()
+    {
         JPanel statsPanel = new JPanel(new GridLayout(3, 1, 10, 10));
         statsPanel.setBorder(BorderFactory.createTitledBorder("Game Stats"));
 
@@ -79,7 +85,8 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
 
-    private void setupHistoryPanel() {
+    private void setupHistoryPanel()
+    {
         resultTextArea = new JTextArea(10, 30);
         resultTextArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(resultTextArea);
@@ -89,7 +96,8 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
 
-    private void playGame(String playerChoice) {
+    private void playGame(String playerChoice)
+    {
         gamesPlayed++;
         String computerChoice = getComputerMove(playerChoice);
         String result;
@@ -118,7 +126,8 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
 
-    private String getComputerMove(String playerChoice) {
+    private String getComputerMove(String playerChoice)
+    {
         if (random.nextDouble() < 0.1) {
             computerStrategy = Strategy.CHEAT;
         } else {
@@ -148,7 +157,8 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
 
-    private String getWinningMove(String playerMove) {
+    private String getWinningMove(String playerMove)
+    {
         switch (playerMove) {
             case "Rock": return "Paper";
             case "Paper": return "Scissors";
@@ -158,7 +168,8 @@ public class RockPaperScissorsFrame extends JFrame {
     }
 
     //   Resize Icons for Buttons
-    private ImageIcon resizeIcon(String path, int width, int height) {
+    private ImageIcon resizeIcon(String path, int width, int height)
+    {
         ImageIcon icon = new ImageIcon(getClass().getResource(path));
         Image img = icon.getImage();
         Image resizedImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
